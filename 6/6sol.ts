@@ -1,30 +1,3 @@
-// Intro:
-
-//     Filtering requirements have grown. We need to be
-//     able to filter any kind of Persons.
-
-// Exercise:
-
-//     Fix typing for the filterPersons so that it can filter users
-//     and return User[] when personType='user' and return Admin[]
-//     when personType='admin'. Also filterPersons should accept
-//     partial User/Admin type according to the personType.
-//     `criteria` argument should behave according to the
-//     `personType` argument value. `type` field is not allowed in
-//     the `criteria` field.
-
-// Higher difficulty bonus exercise:
-
-//     Implement a function `getObjectKeys()` which returns more
-//     convenient result for any argument given, so that you don't
-//     need to cast it.
-
-//     let criteriaKeys = Object.keys(criteria) as (keyof User)[];
-//     -->
-//     let criteriaKeys = getObjectKeys(criteria);
-
-// 
-
 interface User {
     type: 'user';
     name: string;
@@ -56,11 +29,14 @@ export function logPerson(person: Person) {
     );
 }
 
-export function filterPersons(persons: Person[], personType: string, criteria: unknown): unknown[] {
+const getObjectKeys = <T>(obj: T) => Object.keys(obj) as (keyof T)[];
+
+
+export function filterPersons(persons: Person[], personType: string, criteria: Partial<Person>): Person[] {
     return persons
         .filter((person) => person.type === personType)
         .filter((person) => {
-            let criteriaKeys = Object.keys(criteria) as (keyof Person)[];
+            let criteriaKeys = getObjectKeys(criteria);
             return criteriaKeys.every((fieldName) => {
                 return person[fieldName] === criteria[fieldName];
             });

@@ -1,5 +1,21 @@
 {
   "devDependencies": {
-    "typescript": "^4.9.4"
+    "nodemon": "^3.1.4",
+    "typescript": "^4.9.5"
+  },
+  "name": "typescriptexercises",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "dev": "nodemon",
+    "start": "npx tsc && node /dist/1/setup/1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nguyen Bao Huy",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^10.9.2"
   }
 }

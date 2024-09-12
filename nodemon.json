@@ -1,0 +1,5 @@
+{
+  "watch": "./src/9/setup/9.tsx",
+  "ext": ".ts, .js",
+  "exec": "ts-node ./src/9/setup/9.tsx"
+}
